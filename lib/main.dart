@@ -1,7 +1,10 @@
+import 'package:clot/core/di/service_locator.dart';
+import 'package:clot/features/multi_providers.dart';
 import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -17,14 +20,16 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Circular Std',
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+    return BlocProviders(
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Circular Std',
+          useMaterial3: true,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        routerConfig: _appRouter.config(),
       ),
-      routerConfig: _appRouter.config(),
     );
   }
 }

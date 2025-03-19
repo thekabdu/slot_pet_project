@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clot/features/auth/presentation/sign_in/ui/sign_in_screen.dart';
-import 'package:clot/features/home/ui/home_screen.dart';
+import 'package:clot/features/home/presentation/screens/home_screen.dart';
 import 'package:clot/features/notification/ui/notification_screen.dart';
 import 'package:clot/features/profile/ui/profile_screen.dart';
 import 'package:clot/features/recepit/recepit_screen.dart';
@@ -15,16 +15,16 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         //[Sign In]
-        AutoRoute(
-          page: SignInRoute.page,
-          path: '/',
-          initial: true,
-        ),
+        // AutoRoute(
+        //   page: SignInRoute.page,
+        //   path: '/',
 
+        // ),
         //[MAIN NAV BAR]
         AutoRoute(
           path: '/app',
           page: AppIndexRoute.page,
+          initial: true,
           children: [
             AutoRoute(
               path: 'home',
