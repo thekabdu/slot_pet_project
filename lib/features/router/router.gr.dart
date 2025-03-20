@@ -29,6 +29,25 @@ class AppIndexRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CategoriesScreen]
+class CategoriesRoute extends PageRouteInfo<void> {
+  const CategoriesRoute({List<PageRouteInfo>? children})
+      : super(
+          CategoriesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoriesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CategoriesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -62,6 +81,25 @@ class NotificationRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const NotificationScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [ProductDetailScreen]
+class ProductDetailRoute extends PageRouteInfo<void> {
+  const ProductDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProductDetailScreen();
     },
   );
 }

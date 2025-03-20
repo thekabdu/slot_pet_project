@@ -162,6 +162,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontFamily: 'Circular Std',
   );
+  static const TextStyle s16w400 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Circular Std',
+  );
   static const TextStyle s11w500 = TextStyle(
     fontSize: 11,
     fontWeight: FontWeight.w500,

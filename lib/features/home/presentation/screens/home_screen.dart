@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clot/core/presentation/app_bar/custom_app_bar.dart';
 import 'package:clot/core/presentation/widgets/app_search_placeholder.dart';
+import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
 import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc.dart';
 import 'package:clot/features/home/presentation/widgets/categories_list_widget.dart';
 import 'package:clot/features/home/presentation/widgets/product_item.dart';
+import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(
+        leading: ClipOval(
+          child: Image.asset(
+            'assets/images/img_avatar.png',
+            width: 40,
+            height: 40,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) {
           return state.when(
@@ -55,13 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Search',
                     ),
                     16.height,
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Categories'),
-                          Text('See all'),
+                          const Text(
+                            'Categories',
+                            style: AppTextStyles.s16w700,
+                          ),
+                          InkWell(
+                            onTap: () =>
+                                context.router.push(const CategoriesRoute()),
+                            child: const Text(
+                              'See all',
+                              style: AppTextStyles.s16w400,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -73,8 +94,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Products'),
-                          Text('See all'),
+                          Text(
+                            'Products',
+                            style: AppTextStyles.s16w700,
+                          ),
+                          Text(
+                            'See all',
+                            style: AppTextStyles.s16w400,
+                          ),
                         ],
                       ),
                     ),
@@ -82,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
                 SliverPadding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                   sliver: SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {

@@ -1,3 +1,4 @@
+import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
 import 'package:flutter/material.dart';
 
@@ -11,14 +12,17 @@ class CategoriesItem extends StatelessWidget {
       children: [
         ClipOval(
           child: Image.asset(
-            'assets/images/image_not_support.jpg',
+            'assets/images/img_not_support.jpg',
             width: 56,
             height: 56,
             fit: BoxFit.cover,
           ),
         ),
         4.height,
-        Text(title),
+        Text(
+          title,
+          style: AppTextStyles.s12w500,
+        ),
       ],
     );
   }
