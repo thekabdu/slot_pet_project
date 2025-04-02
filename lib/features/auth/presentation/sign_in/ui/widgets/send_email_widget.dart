@@ -21,104 +21,115 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
   final TextEditingController _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        AppTextFieldWidget(
-          label: "Email Address",
-          controller: _emailController,
-          errorMessage: widget.errorMessage,
-          onSubmitted: (value) {
-            context.read<SignInBloc>().add(ValidateEmail(value));
-          },
-        ),
-        16.height,
-        AppCustomButton(
-          onTap: () => context.read<SignInBloc>().add(
-                ValidateEmail(_emailController.text),
-              ),
-          borderRadiusRadii: 100,
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Text(
-            'Continue',
-            style: AppTextStyles.s16w500.copyWith(color: AppColors.white),
-          ),
-        ),
-        16.height,
-        RichText(
-          text: TextSpan(
-            text: 'Dont have an Account ? ',
-            style: AppTextStyles.s13w500.copyWith(color: AppColors.black100),
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextSpan(
-                text: 'Create One',
-                style:
-                    AppTextStyles.s13w700.copyWith(color: AppColors.black100),
+              AppTextFieldWidget(
+                label: "Email Address",
+                controller: _emailController,
+                errorMessage: widget.errorMessage,
+                onSubmitted: (value) {
+                  context.read<SignInBloc>().add(ValidateEmail(value));
+                },
+              ),
+              16.height,
+              AppCustomButton(
+                onTap: () => context.read<SignInBloc>().add(
+                      ValidateEmail(_emailController.text),
+                    ),
+                borderRadiusRadii: 100,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(
+                  'Continue',
+                  style: AppTextStyles.s16w500.copyWith(color: AppColors.white),
+                ),
+              ),
+              16.height,
+              RichText(
+                text: TextSpan(
+                  text: 'Dont have an Account ? ',
+                  style:
+                      AppTextStyles.s13w500.copyWith(color: AppColors.black100),
+                  children: [
+                    TextSpan(
+                      text: 'Create One',
+                      style: AppTextStyles.s13w700
+                          .copyWith(color: AppColors.black100),
+                    ),
+                  ],
+                ),
+              ),
+              70.height,
+              AppCustomButton(
+                onTap: () {},
+                borderRadiusRadii: 100,
+                color: AppColors.bglight2,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(AppIcons.icApple),
+                    Text(
+                      'Continue With Apple',
+                      style: AppTextStyles.s16w500
+                          .copyWith(color: AppColors.black100),
+                    ),
+                    16.width,
+                  ],
+                ),
+              ),
+              12.height,
+              AppCustomButton(
+                onTap: () {},
+                borderRadiusRadii: 100,
+                color: AppColors.bglight2,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(AppIcons.icApple),
+                    Text(
+                      'Continue With Google',
+                      style: AppTextStyles.s16w500
+                          .copyWith(color: AppColors.black100),
+                    ),
+                    16.width,
+                  ],
+                ),
+              ),
+              12.height,
+              AppCustomButton(
+                onTap: () {},
+                borderRadiusRadii: 100,
+                color: AppColors.bglight2,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(AppIcons.icApple),
+                    Text(
+                      'Continue With Facebook',
+                      style: AppTextStyles.s16w500
+                          .copyWith(color: AppColors.black100),
+                    ),
+                    16.width,
+                  ],
+                ),
               ),
             ],
           ),
         ),
-        70.height,
-        AppCustomButton(
-          onTap: () {},
-          borderRadiusRadii: 100,
-          color: AppColors.bglight2,
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(AppIcons.icApple),
-              Text(
-                'Continue With Apple',
-                style:
-                    AppTextStyles.s16w500.copyWith(color: AppColors.black100),
-              ),
-              16.width,
-            ],
-          ),
-        ),
-        12.height,
-        AppCustomButton(
-          onTap: () {},
-          borderRadiusRadii: 100,
-          color: AppColors.bglight2,
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(AppIcons.icApple),
-              Text(
-                'Continue With Google',
-                style:
-                    AppTextStyles.s16w500.copyWith(color: AppColors.black100),
-              ),
-              16.width,
-            ],
-          ),
-        ),
-        12.height,
-        AppCustomButton(
-          onTap: () {},
-          borderRadiusRadii: 100,
-          color: AppColors.bglight2,
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(AppIcons.icApple),
-              Text(
-                'Continue With Facebook',
-                style:
-                    AppTextStyles.s16w500.copyWith(color: AppColors.black100),
-              ),
-              16.width,
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

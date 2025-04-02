@@ -4,7 +4,7 @@ import 'package:clot/features/home/presentation/screens/categories_screen.dart';
 import 'package:clot/features/home/presentation/screens/home_screen.dart';
 import 'package:clot/features/home/presentation/screens/product_detail_screen.dart';
 import 'package:clot/features/notification/ui/notification_screen.dart';
-import 'package:clot/features/profile/ui/profile_screen.dart';
+import 'package:clot/features/profile/presentation/screens/profile_screen.dart';
 import 'package:clot/features/recepit/recepit_screen.dart';
 import 'package:clot/features/app_index_screen.dart';
 
@@ -16,10 +16,11 @@ class AppRouter extends RootStackRouter {
   RouteType get defaultRouteType => const RouteType.cupertino();
   @override
   List<AutoRoute> get routes => [
-        //[Sign In]
+        // [Sign In]
         // AutoRoute(
         //   page: SignInRoute.page,
         //   path: '/',
+        //   initial: true,
         // ),
 
         //[MAIN NAV BAR]
