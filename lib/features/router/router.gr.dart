@@ -86,6 +86,71 @@ class NotificationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [OrderDetailScreen]
+class OrderDetailRoute extends PageRouteInfo<OrderDetailRouteArgs> {
+  OrderDetailRoute({
+    Key? key,
+    required OrderModel order,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderDetailRoute.name,
+          args: OrderDetailRouteArgs(
+            key: key,
+            order: order,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OrderDetailRouteArgs>();
+      return OrderDetailScreen(
+        key: args.key,
+        order: args.order,
+      );
+    },
+  );
+}
+
+class OrderDetailRouteArgs {
+  const OrderDetailRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final Key? key;
+
+  final OrderModel order;
+
+  @override
+  String toString() {
+    return 'OrderDetailRouteArgs{key: $key, order: $order}';
+  }
+}
+
+/// generated route for
+/// [OrderScreen]
+class OrderRoute extends PageRouteInfo<void> {
+  const OrderRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [ProductDetailScreen]
 class ProductDetailRoute extends PageRouteInfo<void> {
   const ProductDetailRoute({List<PageRouteInfo>? children})
@@ -105,6 +170,25 @@ class ProductDetailRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductsByCategoryScreen]
+class ProductsByCategoryRoute extends PageRouteInfo<void> {
+  const ProductsByCategoryRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductsByCategoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductsByCategoryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProductsByCategoryScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
@@ -119,25 +203,6 @@ class ProfileRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ProfileScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [RecepitScreen]
-class RecepitRoute extends PageRouteInfo<void> {
-  const RecepitRoute({List<PageRouteInfo>? children})
-      : super(
-          RecepitRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'RecepitRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const RecepitScreen();
     },
   );
 }

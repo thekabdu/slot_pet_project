@@ -5,4 +5,5 @@ class AppIcons {
   static const icNotification = 'assets/icons/ic_notification.svg';
   static const icProfile = 'assets/icons/ic_profile.svg';
   static const icRecepit = 'assets/icons/ic_recepit.svg';
+  static const icArrowRight = 'assets/icons/ic_arrowright.svg';
 }

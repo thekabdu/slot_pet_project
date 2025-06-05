@@ -69,6 +69,7 @@ class ProductItem extends StatelessWidget {
                   '\$$price',
                   style: AppTextStyles.s12w700,
                 ),
+                8.height,
               ],
             ),
           ),

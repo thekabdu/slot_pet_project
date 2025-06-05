@@ -3,15 +3,16 @@ import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductList extends StatefulWidget {
+class ProductListByCategories extends StatefulWidget {
   final List<ProductsModel> products;
-  const ProductList(this.products, {super.key});
+  const ProductListByCategories(this.products, {super.key});
 
   @override
-  _ProductListState createState() => _ProductListState();
+  _ProductListByCategoriesState createState() =>
+      _ProductListByCategoriesState();
 }
 
-class _ProductListState extends State<ProductList> {
+class _ProductListByCategoriesState extends State<ProductListByCategories> {
   final ScrollController _scrollController = ScrollController();
 
   @override

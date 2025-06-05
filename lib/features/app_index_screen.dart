@@ -15,7 +15,7 @@ class AppIndexScreen extends StatelessWidget {
       routes: const [
         HomeRoute(),
         NotificationRoute(),
-        RecepitRoute(),
+        OrderRoute(),
         ProfileRoute(),
       ],
       bottomNavigationBuilder: (context, tabsRouter) {

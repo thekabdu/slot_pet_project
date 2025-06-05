@@ -5,6 +5,8 @@ import 'package:clot/core/theme/app_colors.dart';
 import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
 import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_bloc.dart';
+import 'package:clot/features/home/presentation/bloc/products_by_categories_bloc/products_by_categories_bloc.dart';
+import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,7 +37,16 @@ class CategoriesScreen extends StatelessWidget {
               itemCount: categories.length,
               itemBuilder: (context, index) {
                 return AppCustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    context.read<ProductsByCategoriesBloc>().add(
+                          ProductsByCategoriesEvent.started(
+                            categories[index],
+                          ),
+                        );
+                    context.router.push(
+                      const ProductsByCategoryRoute(),
+                    );
+                  },
                   padding: const EdgeInsets.all(12),
                   borderRadiusRadii: 8,
                   color: AppColors.bglight2,

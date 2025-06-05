@@ -7,11 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, this.leading, this.action, this.center});
+  const CustomAppBar(
+      {super.key,
+      this.leading,
+      this.action,
+      this.center,
+      this.leadingEmpty = false});
 
   final Widget? leading;
   final Widget? action;
   final Widget? center;
+  final bool? leadingEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +28,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       shadowColor: AppColors.black100,
       titleSpacing: 0,
-      leadingWidth: 100,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 16),
-        child: leading ?? _buildButton(context),
-      ),
+      leadingWidth: leadingEmpty == false ? 100 : 0,
+      leading: leadingEmpty == false
+          ? Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: leading ?? _buildButton(context),
+            )
+          : const SizedBox.shrink(),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

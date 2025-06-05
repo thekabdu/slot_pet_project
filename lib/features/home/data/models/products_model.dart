@@ -10,7 +10,10 @@ class ProductsModel with _$ProductsModel {
     required String title,
     required String description,
     required int price,
+    required String category,
     required String image,
+    required String color,
+    bool? popular,
   }) = _ProductsModel;
 
   factory ProductsModel.fromJson(Map<String, dynamic> json) =>

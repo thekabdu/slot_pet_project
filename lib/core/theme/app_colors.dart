@@ -8,5 +8,5 @@ class AppColors {
   static const Color transparent = Colors.transparent;
   static const Color red100 = Color.fromRGBO(224, 3, 3, 1);
   static const Color bglight2 = Color.fromRGBO(244, 244, 244, 1);
-  
+  static const Color black50 = Color.fromRGBO(39, 39, 39, 0.5);
 }

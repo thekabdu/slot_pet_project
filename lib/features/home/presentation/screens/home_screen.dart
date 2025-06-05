@@ -6,7 +6,7 @@ import 'package:clot/core/utils/exstensions.dart';
 import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc.dart';
 import 'package:clot/features/home/presentation/widgets/categories_list_widget.dart';
-import 'package:clot/features/home/presentation/widgets/product_item.dart';
+import 'package:clot/features/home/presentation/widgets/product_horizontal_list.dart';
 import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,83 +56,61 @@ class _HomeScreenState extends State<HomeScreen> {
             initial: () => const Center(child: CircularProgressIndicator()),
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (message) => Center(child: Text(message)),
-            loaded: (products, page) => CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                SliverToBoxAdapter(
+            loaded: (products, page) {
+              // 🟩 1. Разделить продукты по категориям и признаку popular
+              final popular = products.where((p) => p.popular == true).toList();
+              final gaming = products
+                  .where((p) => p.category.toLowerCase() == 'gaming')
+                  .toList();
+              final mobile = products
+                  .where((p) => p.category.toLowerCase() == 'mobile')
+                  .toList();
+              final audio = products
+                  .where((p) => p.category.toLowerCase() == 'audio')
+                  .toList();
+
+              // 👉 2. Передаём эти списки дальше в UI
+              return CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
                     child: Column(
-                  children: [
-                    const AppSearchPlaceholder(
-                      title: 'Search',
-                    ),
-                    16.height,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Categories',
-                            style: AppTextStyles.s16w700,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AppSearchPlaceholder(title: 'Search'),
+                        16.height,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Categories',
+                                  style: AppTextStyles.s16w700),
+                              InkWell(
+                                onTap: () => context.router
+                                    .push(const CategoriesRoute()),
+                                child: const Text('See all',
+                                    style: AppTextStyles.s16w400),
+                              ),
+                            ],
                           ),
-                          InkWell(
-                            onTap: () =>
-                                context.router.push(const CategoriesRoute()),
-                            child: const Text(
-                              'See all',
-                              style: AppTextStyles.s16w400,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    16.height,
-                    const CategoriesListWidget(),
-                    24.height,
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Products',
-                            style: AppTextStyles.s16w700,
-                          ),
-                          Text(
-                            'See all',
-                            style: AppTextStyles.s16w400,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
-                SliverPadding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                  sliver: SliverGrid(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final product = products[index];
-                        return ProductItem(
-                          title: product.title,
-                          image: product.image,
-                          price: product.price.toInt(),
-                        );
-                      },
-                      childCount: products.length,
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                      childAspectRatio: 0.7,
+                        ),
+                        16.height,
+                        const CategoriesListWidget(),
+                        24.height,
+                        // 👇 Горизонтальные секции с продуктами
+                        ProductsHorizontalList(
+                            title: 'Popular', products: popular),
+                        ProductsHorizontalList(
+                            title: 'Gaming', products: gaming),
+                        ProductsHorizontalList(
+                            title: 'Mobile', products: mobile),
+                        ProductsHorizontalList(title: 'Audio', products: audio),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            },
           );
         },
       ),

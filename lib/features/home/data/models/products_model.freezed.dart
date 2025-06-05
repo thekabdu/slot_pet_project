@@ -24,7 +24,10 @@ mixin _$ProductsModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  String get color => throw _privateConstructorUsedError;
+  bool? get popular => throw _privateConstructorUsedError;
 
   /// Serializes this ProductsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +46,14 @@ abstract class $ProductsModelCopyWith<$Res> {
       _$ProductsModelCopyWithImpl<$Res, ProductsModel>;
   @useResult
   $Res call(
-      {int id, String title, String description, int price, String image});
+      {int id,
+      String title,
+      String description,
+      int price,
+      String category,
+      String image,
+      String color,
+      bool? popular});
 }
 
 /// @nodoc
@@ -65,7 +75,10 @@ class _$ProductsModelCopyWithImpl<$Res, $Val extends ProductsModel>
     Object? title = null,
     Object? description = null,
     Object? price = null,
+    Object? category = null,
     Object? image = null,
+    Object? color = null,
+    Object? popular = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -84,10 +97,22 @@ class _$ProductsModelCopyWithImpl<$Res, $Val extends ProductsModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+      popular: freezed == popular
+          ? _value.popular
+          : popular // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -101,7 +126,14 @@ abstract class _$$ProductsModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id, String title, String description, int price, String image});
+      {int id,
+      String title,
+      String description,
+      int price,
+      String category,
+      String image,
+      String color,
+      bool? popular});
 }
 
 /// @nodoc
@@ -121,7 +153,10 @@ class __$$ProductsModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? description = null,
     Object? price = null,
+    Object? category = null,
     Object? image = null,
+    Object? color = null,
+    Object? popular = freezed,
   }) {
     return _then(_$ProductsModelImpl(
       id: null == id
@@ -140,10 +175,22 @@ class __$$ProductsModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+      popular: freezed == popular
+          ? _value.popular
+          : popular // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -156,7 +203,10 @@ class _$ProductsModelImpl implements _ProductsModel {
       required this.title,
       required this.description,
       required this.price,
-      required this.image});
+      required this.category,
+      required this.image,
+      required this.color,
+      this.popular});
 
   factory _$ProductsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductsModelImplFromJson(json);
@@ -170,11 +220,17 @@ class _$ProductsModelImpl implements _ProductsModel {
   @override
   final int price;
   @override
+  final String category;
+  @override
   final String image;
+  @override
+  final String color;
+  @override
+  final bool? popular;
 
   @override
   String toString() {
-    return 'ProductsModel(id: $id, title: $title, description: $description, price: $price, image: $image)';
+    return 'ProductsModel(id: $id, title: $title, description: $description, price: $price, category: $category, image: $image, color: $color, popular: $popular)';
   }
 
   @override
@@ -187,13 +243,17 @@ class _$ProductsModelImpl implements _ProductsModel {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.popular, popular) || other.popular == popular));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, description, price, image);
+  int get hashCode => Object.hash(runtimeType, id, title, description, price,
+      category, image, color, popular);
 
   /// Create a copy of ProductsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -217,7 +277,10 @@ abstract class _ProductsModel implements ProductsModel {
       required final String title,
       required final String description,
       required final int price,
-      required final String image}) = _$ProductsModelImpl;
+      required final String category,
+      required final String image,
+      required final String color,
+      final bool? popular}) = _$ProductsModelImpl;
 
   factory _ProductsModel.fromJson(Map<String, dynamic> json) =
       _$ProductsModelImpl.fromJson;
@@ -231,7 +294,13 @@ abstract class _ProductsModel implements ProductsModel {
   @override
   int get price;
   @override
+  String get category;
+  @override
   String get image;
+  @override
+  String get color;
+  @override
+  bool? get popular;
 
   /// Create a copy of ProductsModel
   /// with the given fields replaced by the non-null parameter values.

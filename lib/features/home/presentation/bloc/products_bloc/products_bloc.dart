@@ -12,6 +12,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   static const int _limit = 10;
 
   ProductsBloc(this.repository) : super(const ProductsState.initial()) {
+    
     on<_Fetch>((event, emit) async {
       emit(const ProductsState.loading());
       final result = await repository.getProducts(1, _limit);
