@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:clot/features/auth/presentation/sign_in/ui/sign_in_screen.dart';
 import 'package:clot/features/home/presentation/screens/categories_screen.dart';
 import 'package:clot/features/home/presentation/screens/home_screen.dart';
-import 'package:clot/features/home/presentation/screens/product_detail_screen.dart';
+import 'package:clot/features/product_detail/presentation/screens/product_detail_screen.dart';
 import 'package:clot/features/home/presentation/screens/products_by_category_screen.dart';
 import 'package:clot/features/notification/ui/notification_screen.dart';
 import 'package:clot/features/order/data/models/order_model.dart';
@@ -63,6 +63,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           path: '/order-detail',
           page: OrderDetailRoute.page,
+        ),
+        AutoRoute(
+          path: '/product-detail',
+          page: ProductDetailRoute.page,
         ),
       ];
 }

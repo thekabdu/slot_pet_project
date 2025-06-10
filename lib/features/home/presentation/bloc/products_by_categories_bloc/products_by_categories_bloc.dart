@@ -13,9 +13,7 @@ class ProductsByCategoriesBloc
   ProductsByCategoriesBloc(this.repository) : super(const _Initial()) {
     on<_Started>((event, emit) async {
       emit(const ProductsByCategoriesState.loading());
-
       final result = await repository.getProductsByCategory(event.type);
-
       result.fold(
         (failure) => emit(const ProductsByCategoriesState.error(
             "Failed to fetch products by Category")),

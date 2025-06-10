@@ -59,9 +59,8 @@ class ProductsHorizontalList extends StatelessWidget {
               return SizedBox(
                 width: 160,
                 child: ProductItem(
-                  title: product.title,
-                  image: product.image,
-                  price: product.price,
+                  product: product,
+             
                 ),
               );
             },

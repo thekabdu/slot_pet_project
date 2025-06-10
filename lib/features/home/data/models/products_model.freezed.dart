@@ -23,10 +23,10 @@ mixin _$ProductsModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get color => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
   bool? get popular => throw _privateConstructorUsedError;
 
   /// Serializes this ProductsModel to a JSON map.
@@ -49,10 +49,10 @@ abstract class $ProductsModelCopyWith<$Res> {
       {int id,
       String title,
       String description,
-      int price,
-      String category,
-      String image,
-      String color,
+      int? price,
+      String? category,
+      String? image,
+      String? color,
       bool? popular});
 }
 
@@ -74,10 +74,10 @@ class _$ProductsModelCopyWithImpl<$Res, $Val extends ProductsModel>
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? price = null,
-    Object? category = null,
-    Object? image = null,
-    Object? color = null,
+    Object? price = freezed,
+    Object? category = freezed,
+    Object? image = freezed,
+    Object? color = freezed,
     Object? popular = freezed,
   }) {
     return _then(_value.copyWith(
@@ -93,22 +93,22 @@ class _$ProductsModelCopyWithImpl<$Res, $Val extends ProductsModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
+              as int?,
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
+              as String?,
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       popular: freezed == popular
           ? _value.popular
           : popular // ignore: cast_nullable_to_non_nullable
@@ -129,10 +129,10 @@ abstract class _$$ProductsModelImplCopyWith<$Res>
       {int id,
       String title,
       String description,
-      int price,
-      String category,
-      String image,
-      String color,
+      int? price,
+      String? category,
+      String? image,
+      String? color,
       bool? popular});
 }
 
@@ -152,10 +152,10 @@ class __$$ProductsModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? price = null,
-    Object? category = null,
-    Object? image = null,
-    Object? color = null,
+    Object? price = freezed,
+    Object? category = freezed,
+    Object? image = freezed,
+    Object? color = freezed,
     Object? popular = freezed,
   }) {
     return _then(_$ProductsModelImpl(
@@ -171,22 +171,22 @@ class __$$ProductsModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
+              as int?,
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
+              as String?,
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       popular: freezed == popular
           ? _value.popular
           : popular // ignore: cast_nullable_to_non_nullable
@@ -202,10 +202,10 @@ class _$ProductsModelImpl implements _ProductsModel {
       {required this.id,
       required this.title,
       required this.description,
-      required this.price,
-      required this.category,
-      required this.image,
-      required this.color,
+      this.price,
+      this.category,
+      this.image,
+      this.color,
       this.popular});
 
   factory _$ProductsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -218,13 +218,13 @@ class _$ProductsModelImpl implements _ProductsModel {
   @override
   final String description;
   @override
-  final int price;
+  final int? price;
   @override
-  final String category;
+  final String? category;
   @override
-  final String image;
+  final String? image;
   @override
-  final String color;
+  final String? color;
   @override
   final bool? popular;
 
@@ -276,10 +276,10 @@ abstract class _ProductsModel implements ProductsModel {
       {required final int id,
       required final String title,
       required final String description,
-      required final int price,
-      required final String category,
-      required final String image,
-      required final String color,
+      final int? price,
+      final String? category,
+      final String? image,
+      final String? color,
       final bool? popular}) = _$ProductsModelImpl;
 
   factory _ProductsModel.fromJson(Map<String, dynamic> json) =
@@ -292,13 +292,13 @@ abstract class _ProductsModel implements ProductsModel {
   @override
   String get description;
   @override
-  int get price;
+  int? get price;
   @override
-  String get category;
+  String? get category;
   @override
-  String get image;
+  String? get image;
   @override
-  String get color;
+  String? get color;
   @override
   bool? get popular;
 

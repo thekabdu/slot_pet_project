@@ -50,9 +50,7 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
                       itemCount: products.length,
                       itemBuilder: (context, index) {
                         return ProductItem(
-                          title: products[index].title,
-                          image: products[index].image,
-                          price: products[index].price,
+                          product: products[index],
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) =>

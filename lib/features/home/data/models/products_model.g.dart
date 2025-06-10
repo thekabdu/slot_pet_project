@@ -11,10 +11,10 @@ _$ProductsModelImpl _$$ProductsModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       description: json['description'] as String,
-      price: (json['price'] as num).toInt(),
-      category: json['category'] as String,
-      image: json['image'] as String,
-      color: json['color'] as String,
+      price: (json['price'] as num?)?.toInt(),
+      category: json['category'] as String?,
+      image: json['image'] as String?,
+      color: json['color'] as String?,
       popular: json['popular'] as bool?,
     );
 

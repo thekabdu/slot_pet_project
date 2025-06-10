@@ -36,7 +36,7 @@ class _ProductListByCategoriesState extends State<ProductListByCategories> {
       itemBuilder: (context, index) {
         final product = widget.products[index];
         return ListTile(
-          leading: Image.network(product.image, width: 50),
+          leading: Image.network(product.image ?? '', width: 50),
           title: Text(product.title),
           subtitle: Text("\$${product.price}"),
         );

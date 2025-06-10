@@ -9,10 +9,10 @@ class ProductsModel with _$ProductsModel {
     required int id,
     required String title,
     required String description,
-    required int price,
-    required String category,
-    required String image,
-    required String color,
+    int? price,
+    String? category,
+    String? image,
+    String? color,
     bool? popular,
   }) = _ProductsModel;
 
