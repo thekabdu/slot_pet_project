@@ -21,14 +21,14 @@ ProductDetailModel _$ProductDetailModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductDetailModel {
   int get id => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
-  String get model =>
-      throw _privateConstructorUsedError; // required Color color,
-  String get category => throw _privateConstructorUsedError;
-  String get description =>
-      throw _privateConstructorUsedError; // required String color,
+  String? get title => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
   bool? get popular => throw _privateConstructorUsedError;
 
@@ -50,12 +50,14 @@ abstract class $ProductDetailModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String image,
-      int price,
-      String brand,
-      String model,
-      String category,
-      String description,
+      String? title,
+      String? image,
+      int? price,
+      String? brand,
+      String? model,
+      String? category,
+      String? description,
+      String? color,
       int? discount,
       bool? popular});
 }
@@ -76,12 +78,14 @@ class _$ProductDetailModelCopyWithImpl<$Res, $Val extends ProductDetailModel>
   @override
   $Res call({
     Object? id = null,
-    Object? image = null,
-    Object? price = null,
-    Object? brand = null,
-    Object? model = null,
-    Object? category = null,
-    Object? description = null,
+    Object? title = freezed,
+    Object? image = freezed,
+    Object? price = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
+    Object? category = freezed,
+    Object? description = freezed,
+    Object? color = freezed,
     Object? discount = freezed,
     Object? popular = freezed,
   }) {
@@ -90,30 +94,38 @@ class _$ProductDetailModelCopyWithImpl<$Res, $Val extends ProductDetailModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      image: null == image
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      brand: null == brand
+              as int?,
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
+              as String?,
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
+              as String?,
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -136,12 +148,14 @@ abstract class _$$ProductDetailModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String image,
-      int price,
-      String brand,
-      String model,
-      String category,
-      String description,
+      String? title,
+      String? image,
+      int? price,
+      String? brand,
+      String? model,
+      String? category,
+      String? description,
+      String? color,
       int? discount,
       bool? popular});
 }
@@ -160,12 +174,14 @@ class __$$ProductDetailModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? image = null,
-    Object? price = null,
-    Object? brand = null,
-    Object? model = null,
-    Object? category = null,
-    Object? description = null,
+    Object? title = freezed,
+    Object? image = freezed,
+    Object? price = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
+    Object? category = freezed,
+    Object? description = freezed,
+    Object? color = freezed,
     Object? discount = freezed,
     Object? popular = freezed,
   }) {
@@ -174,30 +190,38 @@ class __$$ProductDetailModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      image: null == image
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      brand: null == brand
+              as int?,
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
+              as String?,
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
+              as String?,
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -215,12 +239,14 @@ class __$$ProductDetailModelImplCopyWithImpl<$Res>
 class _$ProductDetailModelImpl implements _ProductDetailModel {
   const _$ProductDetailModelImpl(
       {required this.id,
-      required this.image,
-      required this.price,
-      required this.brand,
-      required this.model,
-      required this.category,
-      required this.description,
+      this.title,
+      this.image,
+      this.price,
+      this.brand,
+      this.model,
+      this.category,
+      this.description,
+      this.color,
       this.discount,
       this.popular});
 
@@ -230,19 +256,21 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
   @override
   final int id;
   @override
-  final String image;
+  final String? title;
   @override
-  final int price;
+  final String? image;
   @override
-  final String brand;
+  final int? price;
   @override
-  final String model;
-// required Color color,
+  final String? brand;
   @override
-  final String category;
+  final String? model;
   @override
-  final String description;
-// required String color,
+  final String? category;
+  @override
+  final String? description;
+  @override
+  final String? color;
   @override
   final int? discount;
   @override
@@ -250,7 +278,7 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
 
   @override
   String toString() {
-    return 'ProductDetailModel(id: $id, image: $image, price: $price, brand: $brand, model: $model, category: $category, description: $description, discount: $discount, popular: $popular)';
+    return 'ProductDetailModel(id: $id, title: $title, image: $image, price: $price, brand: $brand, model: $model, category: $category, description: $description, color: $color, discount: $discount, popular: $popular)';
   }
 
   @override
@@ -259,6 +287,7 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
         (other.runtimeType == runtimeType &&
             other is _$ProductDetailModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.brand, brand) || other.brand == brand) &&
@@ -267,6 +296,7 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
                 other.category == category) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.color, color) || other.color == color) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
             (identical(other.popular, popular) || other.popular == popular));
@@ -274,8 +304,8 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, image, price, brand, model,
-      category, description, discount, popular);
+  int get hashCode => Object.hash(runtimeType, id, title, image, price, brand,
+      model, category, description, color, discount, popular);
 
   /// Create a copy of ProductDetailModel
   /// with the given fields replaced by the non-null parameter values.
@@ -297,12 +327,14 @@ class _$ProductDetailModelImpl implements _ProductDetailModel {
 abstract class _ProductDetailModel implements ProductDetailModel {
   const factory _ProductDetailModel(
       {required final int id,
-      required final String image,
-      required final int price,
-      required final String brand,
-      required final String model,
-      required final String category,
-      required final String description,
+      final String? title,
+      final String? image,
+      final int? price,
+      final String? brand,
+      final String? model,
+      final String? category,
+      final String? description,
+      final String? color,
       final int? discount,
       final bool? popular}) = _$ProductDetailModelImpl;
 
@@ -312,17 +344,21 @@ abstract class _ProductDetailModel implements ProductDetailModel {
   @override
   int get id;
   @override
-  String get image;
+  String? get title;
   @override
-  int get price;
+  String? get image;
   @override
-  String get brand;
+  int? get price;
   @override
-  String get model; // required Color color,
+  String? get brand;
   @override
-  String get category;
+  String? get model;
   @override
-  String get description; // required String color,
+  String? get category;
+  @override
+  String? get description;
+  @override
+  String? get color;
   @override
   int? get discount;
   @override

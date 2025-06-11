@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clot/core/di/service_locator.dart';
 import 'package:clot/core/presentation/app_bar/custom_double_app_bar.dart';
 import 'package:clot/core/presentation/widgets/app_custom_button.dart';
 import 'package:clot/core/theme/app_colors.dart';
 import 'package:clot/core/theme/app_icons.dart';
 import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
+import 'package:clot/features/product_detail/data/service/cart_service.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
 import 'package:clot/features/product_detail/presentation/widgets/image_horizontal_slider_widget.dart';
 import 'package:clot/features/product_detail/presentation/widgets/product_description.dart';
@@ -29,6 +31,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   void initState() {
     super.initState();
   }
+
+  final cartService = sl<CartService>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +59,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     12.height,
                     const ImageHorizontalSliderWidget(),
                     24.height,
-                    const ProductInfoSection(),
+                    ProductInfoSection(
+                      title: product.title,
+                      price: product.price,
+                    ),
                     33.height,
-                    const ProductOptionSelector(),
+                    ProductOptionSelector(
+                      productDetailModel: product,
+                    ),
                     12.height,
                     const QuantitySelector(),
                     26.height,
-                    ProductDescription(description: product.description),
+                    ProductDescription(description: product.description ?? ''),
                     24.height,
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -82,7 +91,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     24.height,
                     const ReviewList(),
-                    30.height,
+                    130.height,
                   ],
                 ),
               ),
@@ -97,7 +106,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 16, horizontal: 16),
                       margin: const EdgeInsets.symmetric(horizontal: 24),
-                      onTap: () {},
+                      onTap: () {
+                        cartService.add(product);
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

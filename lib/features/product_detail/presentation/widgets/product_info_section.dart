@@ -4,7 +4,10 @@ import 'package:clot/core/utils/exstensions.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfoSection extends StatelessWidget {
-  const ProductInfoSection({super.key});
+  final String? title;
+  final int? price;
+  const ProductInfoSection(
+      {super.key, required this.title, required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +16,10 @@ class ProductInfoSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Men's Harrington Jacket", style: AppTextStyles.s16w700),
+          Text(title ?? '', style: AppTextStyles.s16w700),
           15.height,
           Text(
-            "\$148",
+            "\$$price",
             style: AppTextStyles.s16w700.copyWith(color: AppColors.primary100),
           ),
         ],

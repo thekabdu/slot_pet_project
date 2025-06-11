@@ -1,16 +1,19 @@
 import 'package:clot/core/theme/app_icons.dart';
 import 'package:clot/core/utils/exstensions.dart';
+import 'package:clot/features/product_detail/data/models/product_detail_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductOptionSelector extends StatefulWidget {
-  const ProductOptionSelector({super.key});
+  final ProductDetailModel productDetailModel;
+  const ProductOptionSelector({super.key, required this.productDetailModel});
 
   @override
   State<ProductOptionSelector> createState() => _ProductOptionSelectorState();
 }
 
 class _ProductOptionSelectorState extends State<ProductOptionSelector> {
+
   @override
   Widget build(BuildContext context) {
     String selectedSize = 'S';

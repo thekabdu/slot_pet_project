@@ -6,17 +6,20 @@ import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_
 import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/products_by_categories_bloc/products_by_categories_bloc.dart';
 import 'package:clot/features/product_detail/data/datasource/product_detail_remote_datasource.dart';
+import 'package:clot/features/product_detail/data/models/product_detail_hive_model.dart';
 import 'package:clot/features/product_detail/data/repository/product_detail_repository.dart';
+import 'package:clot/features/product_detail/data/service/cart_service.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
 import 'package:clot/features/profile/data/datasource/user_remote_datasource.dart';
 import 'package:clot/features/profile/data/repository/user_repository.dart';
 import 'package:clot/features/profile/presentation/bloc/bloc/user_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 final sl = GetIt.instance; // сокращенно service locator (sl)
 
-void setupLocator() {
+void setupLocator(Box<ProductDetailHiveModel> cartBox) {
   // Регистрация Dio (HTTP клиент)
   sl.registerLazySingleton<Dio>(() => Dio());
 
@@ -46,4 +49,7 @@ void setupLocator() {
   sl.registerFactory<ProductDetailBloc>(() => ProductDetailBloc(sl()));
 
   sl.registerFactory<UserBloc>(() => UserBloc(sl()));
+
+  // CartService
+  sl.registerLazySingleton<CartService>(() => CartService(cartBox));
 }

@@ -7,14 +7,14 @@ part 'product_detail_model.g.dart';
 class ProductDetailModel with _$ProductDetailModel {
   const factory ProductDetailModel({
     required int id,
-    required String image,
-    required int price,
-    required String brand,
-    required String model,
-    // required Color color,
-    required String category,
-    required String description,
-    // required String color,
+    String? title,
+    String? image,
+    int? price,
+    String? brand,
+    String? model,
+    String? category,
+    String? description,
+    String? color,
     int? discount,
     bool? popular,
   }) = _ProductDetailModel;

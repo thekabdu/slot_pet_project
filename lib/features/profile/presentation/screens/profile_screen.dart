@@ -1,5 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clot/core/utils/exstensions.dart';
 import 'package:clot/features/profile/presentation/bloc/bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/widgets/profile_avatar_widget.dart';
+import 'package:clot/features/profile/presentation/widgets/profile_info_widget.dart';
+import 'package:clot/features/profile/presentation/widgets/profile_menu_item.dart';
+import 'package:clot/features/profile/presentation/widgets/profile_sign_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,17 +25,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(builder: (context, state) {
-      return state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (message) => Center(child: Text(message)),
-        fetch: (user) => Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Text('user ${user.toJson()}'),
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return state.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (message) => Center(child: Text(message)),
+          fetch: (user) => Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const ProfileAvatarWidget(),
+                ProfileInfoWidget(
+                  userModel: user,
+                ),
+                32.height,
+                const ProfileMenuItem(title: 'Wishlist'),
+                const ProfileMenuItem(title: 'Payment'),
+                const ProfileMenuItem(title: 'Support'),
+                const ProfileSignOutButton(),
+              ],
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

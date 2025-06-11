@@ -32,6 +32,10 @@ dependencies:
   get_it: ^7.6.7
   bloc: ^9.0.0
 
+  #storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +45,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   freezed: ^2.5.7
   json_serializable: ^6.9.0
+  hive_generator:
 
 flutter:
   uses-material-design: true
