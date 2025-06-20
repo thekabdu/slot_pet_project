@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clot/core/utils/exstensions.dart';
-import 'package:clot/features/profile/presentation/bloc/bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:clot/features/profile/presentation/widgets/profile_avatar_widget.dart';
 import 'package:clot/features/profile/presentation/widgets/profile_info_widget.dart';
 import 'package:clot/features/profile/presentation/widgets/profile_menu_item.dart';

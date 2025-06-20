@@ -5,7 +5,8 @@ import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_
 import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/products_by_categories_bloc/products_by_categories_bloc.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
-import 'package:clot/features/profile/presentation/bloc/bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/user_bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/wishlist_bloc/wishlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +26,9 @@ class BlocProviders extends StatelessWidget {
         BlocProvider(create: (context) => sl<ProductDetailBloc>()),
         BlocProvider(create: (context) => sl<CartBloc>()),
         BlocProvider(create: (context) => sl<CheckoutBloc>()),
+         BlocProvider(create: (context) => sl<WishlistBloc>()),
+
+        
       ],
       child: child,
     );

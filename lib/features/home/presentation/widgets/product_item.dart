@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clot/core/theme/app_colors.dart';
+import 'package:clot/core/theme/app_icons.dart';
 import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
 import 'package:clot/features/home/data/models/products_model.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/wishlist_bloc/wishlist_bloc.dart';
 import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,10 +53,30 @@ class ProductItem extends StatelessWidget {
                     color: Colors.grey,
                   ),
                 ),
-                Positioned(
-                  right: 10,
-                  top: 10,
-                  child: SvgPicture.asset('assets/icons/ic_favorite.svg'),
+                BlocBuilder<WishlistBloc, WishlistState>(
+                  builder: (context, state) {
+                    final id = product.id;
+                    final isFavorite = state.favorites.contains(id);
+                    return Positioned(
+                      right: 5,
+                      top: 5,
+                      child: InkWell(
+                        onTap: () => context
+                            .read<WishlistBloc>()
+                            .add(ToggleFavorite(id)),
+                        child: SvgPicture.asset(
+                            isFavorite
+                                ? AppIcons.icUnfavorite
+                                : AppIcons.icUnfavorite,
+                            colorFilter: isFavorite
+                                ? const ColorFilter.mode(
+                                    AppColors.primary100,
+                                    BlendMode.srcIn,
+                                  )
+                                : null),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

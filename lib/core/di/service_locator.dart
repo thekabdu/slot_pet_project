@@ -1,5 +1,4 @@
 import 'package:clot/features/cart/presentation/bloc/cart_bloc/cart_bloc.dart';
-import 'package:clot/features/cart/presentation/bloc/checkout_bloc/checkout_bloc.dart';
 import 'package:clot/features/home/data/datasource/categories_remote_datasource.dart';
 import 'package:clot/features/home/data/datasource/products_remote_datasource.dart';
 import 'package:clot/features/home/data/repository/categories_repository.dart';
@@ -13,8 +12,10 @@ import 'package:clot/features/product_detail/data/repository/product_detail_repo
 import 'package:clot/features/cart/data/service/cart_service.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
 import 'package:clot/features/profile/data/datasource/user_remote_datasource.dart';
+import 'package:clot/features/profile/data/models/favorites_model.dart';
 import 'package:clot/features/profile/data/repository/user_repository.dart';
-import 'package:clot/features/profile/presentation/bloc/bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/user_bloc/user_bloc.dart';
+import 'package:clot/features/profile/presentation/bloc/wishlist_bloc/wishlist_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -44,6 +45,8 @@ void setupLocator(Box<ProductDetailHiveModel> cartBox) {
       () => ProductDetailRepository(sl()));
   sl.registerLazySingleton(
       () => CartBloc(Hive.box<ProductDetailHiveModel>('cart')));
+  sl.registerLazySingleton(
+      () => WishlistBloc(Hive.box<FavoritesModel>('favoritesBox')));
 
   // Регистрация Bloc
   sl.registerFactory<ProductsBloc>(() => ProductsBloc(sl()));

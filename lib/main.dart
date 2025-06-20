@@ -1,6 +1,7 @@
 import 'package:clot/core/di/service_locator.dart';
 import 'package:clot/features/multi_providers.dart';
 import 'package:clot/features/product_detail/data/models/product_detail_hive_model.dart';
+import 'package:clot/features/profile/data/models/favorites_model.dart';
 import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,6 +10,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ProductDetailHiveModelAdapter());
   final box = await Hive.openBox<ProductDetailHiveModel>('cart');
+  Hive.registerAdapter(FavoritesModelAdapter());
+  final favBox = await Hive.openBox<FavoritesModel>('favoritesBox');
   setupLocator(box);
   runApp(const MyApp());
 }
