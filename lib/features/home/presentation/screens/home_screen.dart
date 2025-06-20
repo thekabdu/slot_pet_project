@@ -53,7 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         center: const DropDownButton(),
-        action: SvgPicture.asset(AppIcons.icFrame),
+        action: InkWell(
+            onTap: () => context.router.push(const CartRoute()),
+            child: SvgPicture.asset(AppIcons.icFrame)),
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) {
@@ -62,7 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (message) => Center(child: Text(message)),
             loaded: (products, page) {
-              // 🟩 1. Разделить продукты по категориям и признаку popular
               final popular = products.where((p) => p.popular == true).toList();
               final gaming = products
                   .where((p) => p.category?.toLowerCase() == 'gaming')
@@ -73,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
               final audio = products
                   .where((p) => p.category?.toLowerCase() == 'audio')
                   .toList();
-              // 👉 2. Передаём эти списки дальше в UI
               return CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
@@ -101,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         16.height,
                         const CategoriesListWidget(),
                         24.height,
-                        // 👇 Горизонтальные секции с продуктами
                         ProductsHorizontalList(
                             title: 'Popular', products: popular),
                         ProductsHorizontalList(

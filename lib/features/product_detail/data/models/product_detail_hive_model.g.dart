@@ -29,13 +29,15 @@ class ProductDetailHiveModelAdapter
       color: fields[8] as String?,
       discount: fields[9] as int?,
       popular: fields[10] as bool?,
+      quantity: fields[11] as int,
+      size: fields[12] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductDetailHiveModel obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -57,7 +59,11 @@ class ProductDetailHiveModelAdapter
       ..writeByte(9)
       ..write(obj.discount)
       ..writeByte(10)
-      ..write(obj.popular);
+      ..write(obj.popular)
+      ..writeByte(11)
+      ..write(obj.quantity)
+      ..writeByte(12)
+      ..write(obj.size);
   }
 
   @override

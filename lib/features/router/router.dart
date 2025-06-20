@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clot/features/auth/presentation/sign_in/ui/sign_in_screen.dart';
+import 'package:clot/features/cart/presentation/screens/cart_screen.dart';
+import 'package:clot/features/cart/presentation/screens/checkout_screen.dart';
+import 'package:clot/features/cart/presentation/screens/success_order_placed_screen.dart';
 import 'package:clot/features/home/presentation/screens/categories_screen.dart';
 import 'package:clot/features/home/presentation/screens/home_screen.dart';
 import 'package:clot/features/product_detail/presentation/screens/product_detail_screen.dart';
@@ -67,6 +70,18 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           path: '/product-detail',
           page: ProductDetailRoute.page,
+        ),
+        AutoRoute(
+          path: '/cart',
+          page: CartRoute.page,
+        ),
+         AutoRoute(
+          path: '/checkout',
+          page: CheckoutRoute.page,
+        ),
+         AutoRoute(
+          path: '/success-order-placed',
+          page: SuccessOrderPlacedRoute.page,
         ),
       ];
 }

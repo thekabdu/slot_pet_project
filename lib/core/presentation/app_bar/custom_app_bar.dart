@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:clot/core/presentation/widgets/wrapper_button.dart';
 import 'package:clot/core/theme/app_colors.dart';
 import 'package:clot/core/theme/app_icons.dart';
-import 'package:clot/core/utils/exstensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -35,21 +34,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: leading ?? _buildButton(context),
             )
           : const SizedBox.shrink(),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          12.width,
-          40.width,
-          Expanded(
-            child: Center(child: center ?? const SizedBox.shrink()), // Центр
-          ),
-          40.width,
-        ],
-      ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: action ?? const SizedBox.shrink(),
+        Expanded(
+          child: Center(child: center ?? const SizedBox.shrink()), // Центр
         ),
       ],
     );

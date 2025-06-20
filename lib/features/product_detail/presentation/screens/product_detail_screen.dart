@@ -6,7 +6,7 @@ import 'package:clot/core/theme/app_colors.dart';
 import 'package:clot/core/theme/app_icons.dart';
 import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
-import 'package:clot/features/product_detail/data/service/cart_service.dart';
+import 'package:clot/features/cart/data/service/cart_service.dart';
 import 'package:clot/features/product_detail/presentation/bloc/product_detail_bloc.dart';
 import 'package:clot/features/product_detail/presentation/widgets/image_horizontal_slider_widget.dart';
 import 'package:clot/features/product_detail/presentation/widgets/product_description.dart';
@@ -57,7 +57,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     12.height,
-                    const ImageHorizontalSliderWidget(),
+                    ImageHorizontalSliderWidget(
+                      image: product.image ?? '',
+                    ),
                     24.height,
                     ProductInfoSection(
                       title: product.title,
@@ -107,7 +109,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           vertical: 16, horizontal: 16),
                       margin: const EdgeInsets.symmetric(horizontal: 24),
                       onTap: () {
-                        cartService.add(product);
+                        cartService.addToCart(product);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

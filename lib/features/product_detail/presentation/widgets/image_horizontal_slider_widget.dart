@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clot/core/utils/exstensions.dart';
 import 'package:flutter/material.dart';
 
 class ImageHorizontalSliderWidget extends StatelessWidget {
-  const ImageHorizontalSliderWidget({super.key});
+  final String image;
+  const ImageHorizontalSliderWidget({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,19 @@ class ImageHorizontalSliderWidget extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        itemBuilder: (context, index) => Image.asset(
-          'assets/images/img_rectangle.png',
+        itemBuilder: (context, index) => CachedNetworkImage(
+          imageUrl: image,
           width: 160,
           height: 250,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
-        separatorBuilder: (context, index) => 8.width,
+        // Image.asset(
+        //   'assets/images/img_rectangle.png',
+        //   width: 160,
+        //   height: 250,
+        //   fit: BoxFit.cover,
+        // ),
+        separatorBuilder: (context, index) => 16.width,
       ),
     );
   }

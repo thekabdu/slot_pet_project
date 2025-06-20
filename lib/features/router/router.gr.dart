@@ -29,6 +29,25 @@ class AppIndexRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CartScreen]
+class CartRoute extends PageRouteInfo<void> {
+  const CartRoute({List<PageRouteInfo>? children})
+      : super(
+          CartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CartRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CartScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [CategoriesScreen]
 class CategoriesRoute extends PageRouteInfo<void> {
   const CategoriesRoute({List<PageRouteInfo>? children})
@@ -43,6 +62,25 @@ class CategoriesRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const CategoriesScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CheckoutScreen]
+class CheckoutRoute extends PageRouteInfo<void> {
+  const CheckoutRoute({List<PageRouteInfo>? children})
+      : super(
+          CheckoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CheckoutScreen();
     },
   );
 }
@@ -222,6 +260,25 @@ class SignInRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SignInScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [SuccessOrderPlacedScreen]
+class SuccessOrderPlacedRoute extends PageRouteInfo<void> {
+  const SuccessOrderPlacedRoute({List<PageRouteInfo>? children})
+      : super(
+          SuccessOrderPlacedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SuccessOrderPlacedRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SuccessOrderPlacedScreen();
     },
   );
 }

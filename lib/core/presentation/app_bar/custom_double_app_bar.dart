@@ -38,7 +38,9 @@ class CustomDoubleAppBar extends StatelessWidget
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Center(child: center ?? const SizedBox.shrink()), // Центр
+            child: Center(
+              child: center ?? const SizedBox.shrink(),
+            ), // Центр
           ),
         ],
       ),
