@@ -5,6 +5,7 @@ import 'package:clot/features/profile/presentation/widgets/profile_avatar_widget
 import 'package:clot/features/profile/presentation/widgets/profile_info_widget.dart';
 import 'package:clot/features/profile/presentation/widgets/profile_menu_item.dart';
 import 'package:clot/features/profile/presentation/widgets/profile_sign_out.dart';
+import 'package:clot/features/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,9 +40,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   userModel: user,
                 ),
                 32.height,
-                const ProfileMenuItem(title: 'Wishlist'),
-                const ProfileMenuItem(title: 'Payment'),
-                const ProfileMenuItem(title: 'Support'),
+                ProfileMenuItem(
+                  title: 'Wishlist',
+                  onTap: () => context.router.push(const WishlistRoute()),
+                ),
+                ProfileMenuItem(title: 'Payment', onTap: () {}),
+                ProfileMenuItem(title: 'Support', onTap: () {}),
                 const ProfileSignOutButton(),
               ],
             ),

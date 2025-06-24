@@ -55,15 +55,14 @@ class ProductItem extends StatelessWidget {
                 ),
                 BlocBuilder<WishlistBloc, WishlistState>(
                   builder: (context, state) {
-                    final id = product.id;
-                    final isFavorite = state.favorites.contains(id);
+                    final isFavorite = state.favorites.contains(product);
                     return Positioned(
                       right: 5,
                       top: 5,
                       child: InkWell(
                         onTap: () => context
                             .read<WishlistBloc>()
-                            .add(ToggleFavorite(id)),
+                            .add(WishlistEvent.toggleFavorite(product)),
                         child: SvgPicture.asset(
                             isFavorite
                                 ? AppIcons.icUnfavorite

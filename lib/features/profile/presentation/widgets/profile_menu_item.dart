@@ -6,25 +6,29 @@ import 'package:flutter_svg/svg.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   final String title;
+  final Function onTap;
 
-  const ProfileMenuItem({super.key, required this.title});
+  const ProfileMenuItem({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColors.bglight2,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title, style: AppTextStyles.s16w400),
-            SvgPicture.asset(AppIcons.icArrowRight)
-          ],
+      child: InkWell(
+        onTap: () => onTap(),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppColors.bglight2,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title, style: AppTextStyles.s16w400),
+              SvgPicture.asset(AppIcons.icArrowRight)
+            ],
+          ),
         ),
       ),
     );

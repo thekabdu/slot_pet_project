@@ -26,7 +26,7 @@ class BlocProviders extends StatelessWidget {
         BlocProvider(create: (context) => sl<ProductDetailBloc>()),
         BlocProvider(create: (context) => sl<CartBloc>()),
         BlocProvider(create: (context) => sl<CheckoutBloc>()),
-         BlocProvider(create: (context) => sl<WishlistBloc>()),
+        BlocProvider(create: (context) => sl<WishlistBloc>()),
 
         
       ],

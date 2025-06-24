@@ -19,19 +19,19 @@ mixin _$WishlistEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadFavorites,
-    required TResult Function(int productId) toggleFavorite,
+    required TResult Function(ProductsModel product) toggleFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadFavorites,
-    TResult? Function(int productId)? toggleFavorite,
+    TResult? Function(ProductsModel product)? toggleFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadFavorites,
-    TResult Function(int productId)? toggleFavorite,
+    TResult Function(ProductsModel product)? toggleFavorite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +119,7 @@ class _$LoadFavoritesImpl implements LoadFavorites {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadFavorites,
-    required TResult Function(int productId) toggleFavorite,
+    required TResult Function(ProductsModel product) toggleFavorite,
   }) {
     return loadFavorites();
   }
@@ -128,7 +128,7 @@ class _$LoadFavoritesImpl implements LoadFavorites {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadFavorites,
-    TResult? Function(int productId)? toggleFavorite,
+    TResult? Function(ProductsModel product)? toggleFavorite,
   }) {
     return loadFavorites?.call();
   }
@@ -137,7 +137,7 @@ class _$LoadFavoritesImpl implements LoadFavorites {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadFavorites,
-    TResult Function(int productId)? toggleFavorite,
+    TResult Function(ProductsModel product)? toggleFavorite,
     required TResult orElse(),
   }) {
     if (loadFavorites != null) {
@@ -188,7 +188,9 @@ abstract class _$$ToggleFavoriteImplCopyWith<$Res> {
           $Res Function(_$ToggleFavoriteImpl) then) =
       __$$ToggleFavoriteImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int productId});
+  $Res call({ProductsModel product});
+
+  $ProductsModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -204,28 +206,38 @@ class __$$ToggleFavoriteImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
+    Object? product = null,
   }) {
     return _then(_$ToggleFavoriteImpl(
-      null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductsModel,
     ));
+  }
+
+  /// Create a copy of WishlistEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductsModelCopyWith<$Res> get product {
+    return $ProductsModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ToggleFavoriteImpl implements ToggleFavorite {
-  const _$ToggleFavoriteImpl(this.productId);
+  const _$ToggleFavoriteImpl(this.product);
 
   @override
-  final int productId;
+  final ProductsModel product;
 
   @override
   String toString() {
-    return 'WishlistEvent.toggleFavorite(productId: $productId)';
+    return 'WishlistEvent.toggleFavorite(product: $product)';
   }
 
   @override
@@ -233,12 +245,11 @@ class _$ToggleFavoriteImpl implements ToggleFavorite {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToggleFavoriteImpl &&
-            (identical(other.productId, productId) ||
-                other.productId == productId));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId);
+  int get hashCode => Object.hash(runtimeType, product);
 
   /// Create a copy of WishlistEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -253,29 +264,29 @@ class _$ToggleFavoriteImpl implements ToggleFavorite {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadFavorites,
-    required TResult Function(int productId) toggleFavorite,
+    required TResult Function(ProductsModel product) toggleFavorite,
   }) {
-    return toggleFavorite(productId);
+    return toggleFavorite(product);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadFavorites,
-    TResult? Function(int productId)? toggleFavorite,
+    TResult? Function(ProductsModel product)? toggleFavorite,
   }) {
-    return toggleFavorite?.call(productId);
+    return toggleFavorite?.call(product);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadFavorites,
-    TResult Function(int productId)? toggleFavorite,
+    TResult Function(ProductsModel product)? toggleFavorite,
     required TResult orElse(),
   }) {
     if (toggleFavorite != null) {
-      return toggleFavorite(productId);
+      return toggleFavorite(product);
     }
     return orElse();
   }
@@ -313,9 +324,10 @@ class _$ToggleFavoriteImpl implements ToggleFavorite {
 }
 
 abstract class ToggleFavorite implements WishlistEvent {
-  const factory ToggleFavorite(final int productId) = _$ToggleFavoriteImpl;
+  const factory ToggleFavorite(final ProductsModel product) =
+      _$ToggleFavoriteImpl;
 
-  int get productId;
+  ProductsModel get product;
 
   /// Create a copy of WishlistEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -326,7 +338,7 @@ abstract class ToggleFavorite implements WishlistEvent {
 
 /// @nodoc
 mixin _$WishlistState {
-  List<int> get favorites => throw _privateConstructorUsedError;
+  List<ProductsModel> get favorites => throw _privateConstructorUsedError;
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.
@@ -341,7 +353,7 @@ abstract class $WishlistStateCopyWith<$Res> {
           WishlistState value, $Res Function(WishlistState) then) =
       _$WishlistStateCopyWithImpl<$Res, WishlistState>;
   @useResult
-  $Res call({List<int> favorites});
+  $Res call({List<ProductsModel> favorites});
 }
 
 /// @nodoc
@@ -365,7 +377,7 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
       favorites: null == favorites
           ? _value.favorites
           : favorites // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<ProductsModel>,
     ) as $Val);
   }
 }
@@ -378,7 +390,7 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
       __$$WishlistStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> favorites});
+  $Res call({List<ProductsModel> favorites});
 }
 
 /// @nodoc
@@ -400,7 +412,7 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
       favorites: null == favorites
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<ProductsModel>,
     ));
   }
 }
@@ -408,12 +420,12 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WishlistStateImpl implements _WishlistState {
-  const _$WishlistStateImpl({required final List<int> favorites})
+  const _$WishlistStateImpl({required final List<ProductsModel> favorites})
       : _favorites = favorites;
 
-  final List<int> _favorites;
+  final List<ProductsModel> _favorites;
   @override
-  List<int> get favorites {
+  List<ProductsModel> get favorites {
     if (_favorites is EqualUnmodifiableListView) return _favorites;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_favorites);
@@ -447,11 +459,11 @@ class _$WishlistStateImpl implements _WishlistState {
 }
 
 abstract class _WishlistState implements WishlistState {
-  const factory _WishlistState({required final List<int> favorites}) =
+  const factory _WishlistState({required final List<ProductsModel> favorites}) =
       _$WishlistStateImpl;
 
   @override
-  List<int> get favorites;
+  List<ProductsModel> get favorites;
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.

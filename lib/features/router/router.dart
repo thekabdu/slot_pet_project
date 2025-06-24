@@ -13,6 +13,7 @@ import 'package:clot/features/order/presentation/screens/order_detail_screen.dar
 import 'package:clot/features/profile/presentation/screens/profile_screen.dart';
 import 'package:clot/features/app_index_screen.dart';
 import 'package:clot/features/order/presentation/screens/order_screen.dart';
+import 'package:clot/features/profile/presentation/screens/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
 part 'router.gr.dart';
@@ -75,13 +76,17 @@ class AppRouter extends RootStackRouter {
           path: '/cart',
           page: CartRoute.page,
         ),
-         AutoRoute(
+        AutoRoute(
           path: '/checkout',
           page: CheckoutRoute.page,
         ),
-         AutoRoute(
+        AutoRoute(
           path: '/success-order-placed',
           page: SuccessOrderPlacedRoute.page,
+        ),
+        AutoRoute(
+          path: '/wishlist',
+          page: WishlistRoute.page,
         ),
       ];
 }
