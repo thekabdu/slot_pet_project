@@ -12,6 +12,7 @@ void main() async {
   final box = await Hive.openBox<ProductDetailHiveModel>('cart');
   Hive.registerAdapter(FavoritesModelAdapter());
   await Hive.openBox<FavoritesModel>('favoritesBox');
+  await Hive.openBox('auth');
   setupLocator(box);
   runApp(const MyApp());
 }

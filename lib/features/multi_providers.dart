@@ -1,4 +1,5 @@
 import 'package:clot/core/di/service_locator.dart';
+import 'package:clot/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:clot/features/cart/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:clot/features/cart/presentation/bloc/checkout_bloc/checkout_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_bloc.dart';
@@ -27,8 +28,7 @@ class BlocProviders extends StatelessWidget {
         BlocProvider(create: (context) => sl<CartBloc>()),
         BlocProvider(create: (context) => sl<CheckoutBloc>()),
         BlocProvider(create: (context) => sl<WishlistBloc>()),
-
-        
+        BlocProvider(create: (_) => sl<AuthBloc>()),
       ],
       child: child,
     );

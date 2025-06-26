@@ -43,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           state is EmailInvalid ? state.message : null,
                     ),
                   ] else ...[
-                    const SendPhoneWidget(),
+                    const SendPasswordWidget(),
                   ],
                 ],
               ),

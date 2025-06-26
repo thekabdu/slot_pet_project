@@ -1,4 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:clot/core/di/service_locator.dart';
+import 'package:clot/features/auth/data/auth_service.dart';
+import 'package:clot/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'sign_in_event.dart';
@@ -12,6 +15,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       } else {
         emit(EmailInvalid("Invalid email format"));
       }
+    });
+
+    on<SignInWithPassword>((event, emit) async {
+      emit(SignInLoading());
+      await Future.delayed(const Duration(seconds: 1)); // имитация API
+
+      // Сохраняем токен и уведомляем AuthBloc
+      final authBloc = sl<AuthBloc>();
+      await sl<AuthService>().saveToken(event.password);
+      authBloc.add(const AuthEvent.loggedIn('fake_token'));
+
+      emit(SignInSuccess());
     });
   }
 

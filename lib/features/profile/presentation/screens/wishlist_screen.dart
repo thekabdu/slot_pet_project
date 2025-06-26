@@ -16,12 +16,6 @@ class WishlistScreen extends StatefulWidget {
 
 class _WishlistScreenState extends State<WishlistScreen> {
   @override
-  void initState() {
-    context.read<WishlistBloc>().add(const WishlistEvent.loadFavorites());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(

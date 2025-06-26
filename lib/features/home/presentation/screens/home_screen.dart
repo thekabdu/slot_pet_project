@@ -5,6 +5,7 @@ import 'package:clot/core/theme/app_colors.dart';
 import 'package:clot/core/theme/app_icons.dart';
 import 'package:clot/core/theme/app_text_style.dart';
 import 'package:clot/core/utils/exstensions.dart';
+import 'package:clot/features/profile/presentation/bloc/wishlist_bloc/wishlist_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/categories_bloc/categories_bloc.dart';
 import 'package:clot/features/home/presentation/bloc/products_bloc/products_bloc.dart';
 import 'package:clot/features/home/presentation/widgets/categories_list_widget.dart';
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     context.read<CategoriesBloc>().add(const CategoriesEvent.started());
     context.read<ProductsBloc>().add(const ProductsEvent.fetch());
+    context.read<WishlistBloc>().add(const WishlistEvent.loadFavorites());
     _scrollController.addListener(_onScroll);
   }
 
@@ -45,11 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomDoubleAppBar(
-        leading: const CircleAvatar(
-          backgroundColor: AppColors.primary100,
-          radius: 100,
-          backgroundImage: NetworkImage(
-            "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=3307&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        leading: InkWell(
+          onTap: () => AutoTabsRouter.of(context).setActiveIndex(3),
+          child: const CircleAvatar(
+            backgroundColor: AppColors.primary100,
+            radius: 100,
+            backgroundImage: NetworkImage(
+              "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=3307&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ),
           ),
         ),
         center: const DropDownButton(),

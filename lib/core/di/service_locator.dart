@@ -1,3 +1,5 @@
+import 'package:clot/features/auth/data/auth_service.dart';
+import 'package:clot/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:clot/features/cart/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:clot/features/home/data/datasource/categories_remote_datasource.dart';
 import 'package:clot/features/home/data/datasource/products_remote_datasource.dart';
@@ -37,6 +39,7 @@ void setupLocator(Box<ProductDetailHiveModel> cartBox) {
       () => ProductDetailRemoteDataSource(sl()));
 
   // Регистрация Repository
+
   sl.registerLazySingleton<ProductsRepository>(() => ProductsRepository(sl()));
   sl.registerLazySingleton<CategoriesRepository>(
       () => CategoriesRepository(sl()));
@@ -49,6 +52,7 @@ void setupLocator(Box<ProductDetailHiveModel> cartBox) {
       () => WishlistBloc(Hive.box<FavoritesModel>('favoritesBox')));
 
   // Регистрация Bloc
+
   sl.registerFactory<ProductsBloc>(() => ProductsBloc(sl()));
   sl.registerFactory<CategoriesBloc>(() => CategoriesBloc(sl()));
   sl.registerFactory<ProductsByCategoriesBloc>(
@@ -59,4 +63,6 @@ void setupLocator(Box<ProductDetailHiveModel> cartBox) {
 
   // CartService
   sl.registerLazySingleton<CartService>(() => CartService());
+  sl.registerLazySingleton<AuthService>(() => AuthServiceImpl());
+  sl.registerLazySingleton<AuthBloc>(() => AuthBloc(sl<AuthService>()));
 }
